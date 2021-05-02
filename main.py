@@ -21,10 +21,7 @@ class Game:
             print("Завялась драка. К оружию!")
             fight = Fight(self.player, Goblin())
             fight.start()
-            print("Вы встретили Гоблина!")
-            print("Завялась драка. К оружию!")
-            fight = Fight(self.player, Goblin())
-            fight.start()
+        self.display_status_bar()
 
     def print_introduction(self):
         print("Вот такая вот предыстория")
@@ -37,11 +34,13 @@ class Game:
 
     def display_status_bar(self):
         table = PrettyTable()
-        table.field_names = ["Характеристки:", "Уровень"]
-        table.add_row([f"Здоровье: {self.player.health}", f"Уровень: {self.player.level}"])
-        table.add_row([f"Сила: {self.player.strength}", f"Опыт: {self.player.experience}/100"])
-        table.add_row([f"Ловкость: {self.player.agility}", ""])
-        table.add_row([f"Интеллект: {self.player.wisdom}", ""])
+        table.field_names = ["Характеристки:", "Уровень", "Снаряжение"]
+        table.add_row([f"Здоровье: {self.player.health}", f"Уровень: {self.player.level}", f"Золото: {self.player.gold}"])
+        table.add_row([f"Мана: {self.player.mana}", f"Опыт: {self.player.experience}/100", ""])
+        table.add_row([f"Сила: {self.player.strength}", "", ""])
+        table.add_row([f"Ловкость: {self.player.agility}", "", ""])
+        table.add_row([f"Интеллект: {self.player.wisdom}", "", ""])
+        table.add_row([f"Шанс уклониться: {self.player.dodge_chance}", "", ""])
         table.align = 'r'
         print(table)
 
