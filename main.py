@@ -2,6 +2,7 @@ from prettytable import PrettyTable
 from player import Player
 from fight import Fight
 from goblin import Goblin
+from chapter_1 import Chapter_1
 
 
 class Game:
@@ -9,19 +10,8 @@ class Game:
         self.player = Player()
 
     def start(self):
-        self.print_introduction()
-        self.choose_class()
-        print("Вы зашли в лес. У вас есть выбор.")
-        print("Пойти налево (1)")
-        print("Пойти прямо (2)")
-        print("Пойти направо (3)")
-        choice = input()
-        if choice == "1":
-            print("Вы встретили Гоблина!")
-            print("Завялась драка. К оружию!")
-            fight = Fight(self.player, Goblin())
-            fight.start()
-        self.display_status_bar()
+        chapter_1 = Chapter_1(self.player)
+        chapter_1.start()
 
     def print_introduction(self):
         print("Вот такая вот предыстория")

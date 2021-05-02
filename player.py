@@ -5,6 +5,7 @@ from character_classes.assassin import Assassin
 
 class Player:
     def __init__(self):
+        self.name = None
         self.character_class = None
         self.main_characteristic = None
         self.health = None
