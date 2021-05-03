@@ -45,6 +45,7 @@ class Chapter_1:
         self.clear_terminal()
         print("Ваше ремесло: (Маг, Воин, Убийца)")
         self.player.character_class = input()
+        self.player.set_class(self.player.character_class.lower())
         self.campfire()
 
     def take_sword_from_campfire(self):
