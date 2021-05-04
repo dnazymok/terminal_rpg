@@ -21,32 +21,21 @@ class Player:
 
     def set_class(self, input_class):
         if input_class == "маг":
-            self.character_class = Wizard
-            self.health = Wizard.health
-            self.strength = Wizard.strength
-            self.agility = Wizard.agility
-            self.wisdom = Wizard.wisdom
-            self.main_characteristic = self.wisdom
-            self.dodge_chance = self.agility * 5
-            self.mana = self.wisdom * 10
+            self.set_attributes_to_player_class(Wizard)
         elif input_class == "воин":
-            self.character_class = Warrior
-            self.health = Warrior.health
-            self.strength = Warrior.strength
-            self.agility = Warrior.agility
-            self.wisdom = Warrior.wisdom
-            self.main_characteristic = self.strength
-            self.dodge_chance = self.agility * 5
-            self.mana = self.wisdom * 10
+            self.set_attributes_to_player_class(Warrior)
         elif input_class == "убийца":
-            self.character_class = Assassin
-            self.health = Assassin.health
-            self.strength = Assassin.strength
-            self.agility = Assassin.agility
-            self.wisdom = Assassin.wisdom
-            self.main_characteristic = self.agility
-            self.dodge_chance = self.agility * 5
-            self.mana = self.wisdom * 10
+            self.set_attributes_to_player_class(Assassin)
+
+    def set_attributes_to_player_class(self, player_class):
+        self.character_class = player_class
+        self.health = player_class.health
+        self.strength = player_class.strength
+        self.agility = player_class.agility
+        self.wisdom = player_class.wisdom
+        self.main_characteristic = self.agility
+        self.dodge_chance = self.agility * 5
+        self.mana = self.wisdom * 10
 
     def light_attack(self, enemy):
         enemy.health -= self.main_characteristic * 4
