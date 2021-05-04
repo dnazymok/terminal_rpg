@@ -1,6 +1,7 @@
 from character_classes.warrior import Warrior
 from character_classes.wizard import Wizard
 from character_classes.assassin import Assassin
+from prettytable import PrettyTable
 
 
 class Player:
@@ -49,4 +50,16 @@ class Player:
 
     def light_attack(self, enemy):
         enemy.health -= self.main_characteristic * 4
-        print("Вы нанес лёгкий удар.")
+        print("Вы нанесли лёгкий удар.")
+
+    def display_status(self):
+        table = PrettyTable()
+        table.field_names = ["Характеристки:", "Уровень", "Снаряжение"]
+        table.add_row([f"Здоровье: {self.health}", f"Уровень: {self.level}", f"Золото: {self.gold}"])
+        table.add_row([f"Мана: {self.mana}", f"Опыт: {self.experience}/100", ""])
+        table.add_row([f"Сила: {self.strength}", "", ""])
+        table.add_row([f"Ловкость: {self.agility}", "", ""])
+        table.add_row([f"Интеллект: {self.wisdom}", "", ""])
+        table.add_row([f"Шанс уклониться: {self.dodge_chance}", "", ""])
+        table.align = 'r'
+        print(table)

@@ -2,7 +2,7 @@ from enemy import Enemy
 
 
 class Goblin(Enemy):
-    name = "Goblin"
+    name = "Гоблин"
     health = 40
     damage = 7
     gold_reward = 10
@@ -10,4 +10,5 @@ class Goblin(Enemy):
 
     def __init__(self):
         self.health = Goblin.health
+
 

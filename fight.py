@@ -18,8 +18,6 @@ class Fight:
             if self.player_turn() == "Win":
                 self.player.gold += self.enemy.gold_reward
                 self.player.experience += self.enemy.exp_reward
-                print(f"Вы победили! С врага {self.enemy.name} вы получили {self.enemy.exp_reward} опыта. "
-                      f"Так же с него выпало {self.enemy.gold_reward} золота")
                 break
             if self.enemy_turn() == "Win":
                 print("На этом ваше приключение закончилось.")
