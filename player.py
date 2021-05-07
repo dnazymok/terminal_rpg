@@ -33,7 +33,12 @@ class Player:
         self.strength = player_class.strength
         self.agility = player_class.agility
         self.wisdom = player_class.wisdom
-        self.main_characteristic = self.agility
+        if player_class == Warrior:
+            self.main_characteristic = self.strength
+        elif player_class == Wizard:
+            self.main_characteristic = self.wisdom
+        elif player_class == Assassin:
+            self.main_characteristic = self.agility
         self.dodge_chance = self.agility * 5
         self.mana = self.wisdom * 10
 
