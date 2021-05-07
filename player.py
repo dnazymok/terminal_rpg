@@ -2,6 +2,7 @@ from character_classes.warrior import Warrior
 from character_classes.wizard import Wizard
 from character_classes.assassin import Assassin
 from prettytable import PrettyTable
+from random import randint
 
 
 class Player:
@@ -45,6 +46,14 @@ class Player:
     def light_attack(self, enemy):
         enemy.health -= self.main_characteristic * 4
         print("Вы нанесли лёгкий удар.")
+
+    def heavy_attack(self, enemy):
+        if randint(1, 101) < self.strength * 15:  # chance increases by player strength
+            enemy.health -= self.main_characteristic * 8
+
+    def magic_attack(self, enemy):
+        enemy.health -= self.wisdom * 10
+        self.mana -= 3
 
     def display_status(self):
         table = PrettyTable()
