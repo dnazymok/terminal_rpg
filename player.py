@@ -50,9 +50,13 @@ class Player:
     def heavy_attack(self, enemy):
         if randint(1, 101) < self.strength * 15:  # chance increases by player strength
             enemy.health -= self.main_characteristic * 8
+            print("Вы нанесли тяжёлый удар.")
+        else:
+            print("Вы попытались нанести тяжёлый удар, но промахнулись")
 
     def magic_attack(self, enemy):
         enemy.health -= self.wisdom * 10
+        print("Вы нанесли магический удар.")
         self.mana -= 3
 
     def display_status(self):

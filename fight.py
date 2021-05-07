@@ -26,7 +26,22 @@ class Fight:
 
     def player_turn(self):
         sleep(1)
-        self.player.light_attack(self.enemy)
+        print("Лёгкая атака (гарантированое попадание, средний урон): (1)")
+        print("Тяжёлая атака (чем больше силы тем больше шанс попадания, большой урон): (2)")
+        print("Магическая атака (урон зависит от мудрости персонажа, отнимает ману): (3)")
+        while True:
+            choice = input()
+            if choice == "1":
+                self.player.light_attack(self.enemy)
+                break
+            elif choice == "2":
+                self.player.heavy_attack(self.enemy)
+                break
+            elif choice == "3":
+                self.player.magic_attack(self.enemy)
+                break
+            else:
+                print("Выберете вариант из предложеных")
         self.display_fight_status()
         if self.is_enemy_dead():
             return "Win"
