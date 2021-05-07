@@ -14,6 +14,7 @@ class Fight:
 
     def start(self):
         """Game loop. Breaks if player or enemy turn ends in victory"""
+        self.display_fight_status()
         while True:
             if self.player_turn() == "Win":
                 self.player.gold += self.enemy.gold_reward

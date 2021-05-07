@@ -13,5 +13,6 @@ class Game:
         chapter_1.start()
 
 
-g = Game()
-g.start()
+if __name__ == "__main__":
+    g = Game()
+    g.start()

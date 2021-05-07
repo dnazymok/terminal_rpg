@@ -1,7 +1,7 @@
 from time import sleep
 from fight import Fight
 from goblin import Goblin
-
+from orc import Orc
 import os
 
 
@@ -15,7 +15,7 @@ class Chapter_1:
     def start(self):
         self.update_terminal_view()
         print("Вы проснулись в абсолютной глуши. Ночь, лес, единственный источник света"
-              " которвый вы видите это костёр недалеко от вас.")
+              " который вы видите это костёр недалеко от вас.")
         print("Пройти к костру: (1)")
         while True:
             player_choice = input()
@@ -28,7 +28,7 @@ class Chapter_1:
     def campfire(self):
         while True:
             self.update_terminal_view()
-            print("Вы присели возле костра, здесь кажется безопасно.В него ещё почему-то воткнут меч. ")
+            print("Вы присели возле костра, здесь кажется безопасно. В него ещё почему-то воткнут меч. ")
             if not self.is_remember_name:
                 print("Вспомнить как вас зовут: (1)")
             if not self.is_remember_class:
@@ -46,7 +46,7 @@ class Chapter_1:
                 self.take_sword_from_campfire()
                 break
             else:
-                print("Выберете вариант из предложеных")
+                print("Выберите вариант из предложеных")
 
     def remember_name(self):
         self.update_terminal_view()
@@ -104,6 +104,7 @@ class Chapter_1:
                 self.player_go_left()
             elif choice == "2":
                 self.player_go_right()
+                break
             else:
                 print("Выберете вариант из предложеных")
 
@@ -118,8 +119,7 @@ class Chapter_1:
             if choice == "1":
                 self.update_terminal_view()
                 print("Вы решились напасть первым")
-                fight = Fight(self.player, Goblin())
-                fight.start()
+                Fight(self.player, Goblin()).start()
                 print("У гоблина вы нашли несколько монет в кошельке. Так же вы видите, что тропинка заканчивается, "
                       "нужно возвращаться обратно")
                 self.is_goblin_dead = True
@@ -137,7 +137,20 @@ class Chapter_1:
                 print("Выберете вариант из предложеных")
 
     def player_go_right(self):
-        pass
+        self.update_terminal_view()
+        print("Вы следуете по тропинке и натыкаетесь на разграбленную повозку, видимо, здесь недавно было сражение. "
+              "Со стороны слышите чей-то громкий крик, оборачиваясь, вы видите как на вас бежит орк с топором над головой. "
+              "Готовьтесь к драке!")
+        print("Напасть на орка: (1)")
+        while True:
+            if input() == "1":
+                self.update_terminal_view()
+                Fight(self.player, Orc()).start()
+                print("Ещё не придумал что дальше. Вы внезапно умираете. Конец игры")
+                break
+            else:
+                print("Выберете вариант из предложеных")
+
 
     def update_terminal_view(self):
         os.system('cls' if os.name == 'nt' else 'clear')
